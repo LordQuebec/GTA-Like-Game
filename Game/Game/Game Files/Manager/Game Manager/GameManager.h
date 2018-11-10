@@ -1,14 +1,19 @@
 #pragma once
 
 #include <Windows.h>
+#include <direct.h>
 #include <string>
 
 #include "../../Debug/Debug.h"
+#include "../../GameObject/GameObject.h"
+#include "../../OpenGL/OpenGL.h"
+#include "../../Window/Window.h"
 
 class GameManager
 {
 private:
 	GameManager();
+	static GameManager* m_instance;
 
 	bool CheckExistance();//Check if the game is already running
 	bool CheckHardDriveSpace();//Check if we have enough HardDrive space
@@ -18,18 +23,14 @@ private:
 
 	void GetScreenInfo();
 
-	static GameManager* m_instance;
-	
-	//Window* m_mainWindow;
-
 	bool m_quit = false;
 	MSG m_msg = MSG();
-	//GLuint m_shaderProgramID = NULL;
+	GLuint m_shaderProgramID = NULL;
 
 
 	struct
 	{
-		std::string GameName;//Name of the process/Window
+		std::wstring GameName;//Name of the process/Window
 		
 		//In Bytes
 		DWORDLONG DiskSpaceNeeded;
@@ -45,10 +46,11 @@ private:
 
 	struct
 	{
-		HMONITOR m_monitorHandle;
-		MONITORINFOEX m_monitorInfo;
+		HMONITOR MonitorHandle;
+		MONITORINFOEX MonitorInfo;
 
-		//glm
+		glm::vec2 ScreenSize;
+		glm::vec2 WorkAreaSize;
 	}m_screenInfo;
 
 
@@ -57,17 +59,18 @@ public:
 	static GameManager* CreateInstance();
 	static GameManager* GetInstance() { return m_instance; }
 
-	void GameInfo(const std::string AppName, DWORDLONG DiskSpaceNeeded, DWORDLONG RamNeeded, DWORDLONG VirtualMemoryNeeded);
+	void GameInfo(const std::wstring AppName, DWORDLONG DiskSpaceNeeded, DWORDLONG RamNeeded, DWORDLONG VirtualMemoryNeeded);
 
-	int InitializeGame(std::string &windowConfigPath, HINSTANCE hInstance, WNDPROC winProc);
-	WPARAM MainLoop(MSG &msgw);
+	int InitializeGame(UINT targetFPS, HINSTANCE hInstance, WNDPROC winProc, int nCmdShow);
+	WPARAM MainLoop();
 
-	std::string GetGameName()const { return m_GameInfo.GameName; }
+	std::wstring GetGameName()const { return m_GameInfo.GameName; }
 	DWORD GetCPUSpeed()const { return m_GameInfo.CPUSpeed; }
 
-	void Quit(const int ExitCode);
+	glm::vec2& GetScreenResolution() { return m_screenInfo.ScreenSize; }
+	glm::vec2& GetWorkAreaResolution() { return m_screenInfo.WorkAreaSize; }
 
-	//Window* GetMainWindowPointer() { return m_mainWindow; }
+	void Quit(const int ExitCode);
 
 	~GameManager();
 };

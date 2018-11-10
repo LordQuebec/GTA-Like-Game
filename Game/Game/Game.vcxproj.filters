@@ -13,5 +13,72 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Debug">
+      <UniqueIdentifier>{9dc42603-6cc0-4600-bbaa-d465c45dc008}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Manager">
+      <UniqueIdentifier>{2bb37d57-56b2-4687-b2c5-f855545b4509}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Manager\Game Manager">
+      <UniqueIdentifier>{a59607ff-687b-4519-a4dd-6575408b4b55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Window">
+      <UniqueIdentifier>{00076f2e-c95c-449a-b3b9-eb11c02505b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObject">
+      <UniqueIdentifier>{307c7860-41dd-4e3c-8821-b242a726b146}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\OpenGL">
+      <UniqueIdentifier>{fdce82e4-7ca9-48a2-849f-a65c94bc7018}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Struct">
+      <UniqueIdentifier>{8fc8227d-de3b-4a8b-9d57-09f740a27ddc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Struct\Color">
+      <UniqueIdentifier>{d236579e-b612-47ad-bfa3-b0a4a91bfd5a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Game Files\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Files\Debug\Debug.cpp">
+      <Filter>Source Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Files\Manager\Game Manager\GameManager.cpp">
+      <Filter>Source Files\Manager\Game Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Files\Window\Window.cpp">
+      <Filter>Source Files\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Files\GameObject\GameObject.cpp">
+      <Filter>Source Files\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Files\OpenGL\OpenGL.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Files\Struct\Color\Color.cpp">
+      <Filter>Source Files\Struct\Color</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game Files\Debug\Debug.h">
+      <Filter>Source Files\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Files\Manager\Game Manager\GameManager.h">
+      <Filter>Source Files\Manager\Game Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Files\Window\Window.h">
+      <Filter>Source Files\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Files\GameObject\GameObject.h">
+      <Filter>Source Files\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Files\OpenGL\OpenGL.h">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Files\Struct\Color\Color.h">
+      <Filter>Source Files\Struct\Color</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

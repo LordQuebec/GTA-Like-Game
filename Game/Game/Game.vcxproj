@@ -50,20 +50,21 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='64Bit|Win32'">
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='64Bit|x64'">
     <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -129,6 +130,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game Files\Debug\Debug.cpp" />
+    <ClCompile Include="Game Files\GameObject\GameObject.cpp" />
+    <ClCompile Include="Game Files\main.cpp" />
+    <ClCompile Include="Game Files\Manager\Game Manager\GameManager.cpp" />
+    <ClCompile Include="Game Files\OpenGL\OpenGL.cpp" />
+    <ClCompile Include="Game Files\Struct\Color\Color.cpp" />
+    <ClCompile Include="Game Files\Window\Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game Files\Debug\Debug.h" />
+    <ClInclude Include="Game Files\GameObject\GameObject.h" />
+    <ClInclude Include="Game Files\Manager\Game Manager\GameManager.h" />
+    <ClInclude Include="Game Files\OpenGL\OpenGL.h" />
+    <ClInclude Include="Game Files\Struct\Color\Color.h" />
+    <ClInclude Include="Game Files\Window\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
