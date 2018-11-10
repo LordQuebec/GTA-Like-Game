@@ -61,7 +61,13 @@ int GameManager::InitializeGame(UINT p_tFPS, HINSTANCE p_hInstance, WNDPROC p_wn
 	OpenGL = OGL::CreateInstance();
 	OpenGL->Enable(Window->GetHandle(), Color(1, 0, 1, 1), Window->GetSize());
 	
-	m_shaderProgramID = OpenGL->LoadShader("Ressources/VertexShader.vs", "Ressources/FragmentShader.fs");
+	m_shaderProgramID = OpenGL->LoadShader("Ressources/Shaders/Default/VertexShader.vs", "Ressources/Shaders/Default/FragmentShader.fs");
+
+	if (m_shaderProgramID == 0)
+	{
+		ERR_MSG("Error Creating the default shader");
+		return 5;
+	}
 
 	//Splash screen
 	//check set save game directory
@@ -223,3 +229,6 @@ GameManager::~GameManager()
 {
 	m_instance = nullptr;
 }
+
+
+GameManager* Game = nullptr;

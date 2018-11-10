@@ -89,5 +89,8 @@
     <ClInclude Include="Game Files\Manager\Time Manager\TimeManager.h">
       <Filter>Source Files\Manager\TimeManager</Filter>
     </ClInclude>
+    <ClInclude Include="Game Files\main.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

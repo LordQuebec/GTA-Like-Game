@@ -52,8 +52,8 @@ public:
 	
 	virtual unsigned int GetIndex()final { return m_index; }
 
-	inline const char* GetRealType()const { return typeid(*this).name; }
-	inline const char* GetRealRawType()const { return typeid(*this).raw_name; }
+	inline const char* GetRealType()const { return typeid(*this).name(); }
+	inline const char* GetRealRawType()const { return typeid(*this).raw_name(); }
 
 	virtual ~GameObject();
 };

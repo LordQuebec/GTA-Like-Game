@@ -75,3 +75,6 @@ public:
 
 	~GameManager();
 };
+
+
+extern GameManager* Game;

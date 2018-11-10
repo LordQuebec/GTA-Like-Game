@@ -1,6 +1,8 @@
 #pragma once
 
 #include <Windows.h>
+#include <glew.h>
+#include <gl\GL.h>
 
 #include <tchar.h>
 
@@ -72,5 +74,11 @@ public:
 
 extern WindowMgr*Window;
 
-#define ForwardWinPos do{Window->SetPos(LOWROD(lParam), HIWORD(lParam));} while(0)
-#define ForwardWinResize do{Window->SetSize(LWORD(lParam), HIWORD(lParam));} while (0)
+#define ForwardWinPos do{Window->SetPos(LOWORD(lParam), HIWORD(lParam));} while(0)
+#define ForwardWinResize do{Window->SetSize(LOWORD(lParam), HIWORD(lParam));} while (0)
+
+#define ForwardMoveSize  case WM_MOVE: ForwardWinPos; break;	case WM_SIZE: ForwardWinResize; break;
+
+#define ForwardFocus case WM_SETFOCUS: Window->SetFocus(true); break; case WM_KILLFOCUS: Window->SetFocus(false); break;
+
+#define WindowHandling ForwardMoveSize ForwardFocus

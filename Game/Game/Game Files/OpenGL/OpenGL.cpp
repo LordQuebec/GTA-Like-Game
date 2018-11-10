@@ -90,16 +90,14 @@ GLuint OGL::LoadShader(const char* p_vPath, const char* p_fPath)const
 	std::vector<char>ErrorMsg;
 
 	//Log Compiling Vertex Shader
-	vertexShaderID = CompileShader(fragmentShaderCode, ErrorMsg);
-	if (vertexShaderID == 0)//Compile error
+	if (!CompileShader(vertexShaderID, vertexShaderCode, ErrorMsg))//Compile error
 	{
 		ERR_MSG("Error Compiling Vertex shader");
 		//Log ErrorMsg
 		return 0;
 	}
 	//Log Compiling Fragment Shader
-	fragmentShaderID = CompileShader(fragmentShaderCode, ErrorMsg);
-	if (fragmentShaderID == 0)//Compile error
+	if (!CompileShader(fragmentShaderID, fragmentShaderCode, ErrorMsg))//Compile error
 	{
 		ERR_MSG("Error Compiling Fragment shader");
 		//Log ErrorMsg
@@ -120,7 +118,10 @@ GLuint OGL::LoadShader(const char* p_vPath, const char* p_fPath)const
 	glGetProgramiv(ProgramID, GL_INFO_LOG_LENGTH, &infoLogLenght);
 	if (infoLogLenght > 0)
 	{
+		ErrorMsg.resize(infoLogLenght);
 		glGetProgramInfoLog(ProgramID, infoLogLenght, NULL, &ErrorMsg[0]);
+		
+		//std::_Debug_message(std::wstring(ErrorMsg.begin(), ErrorMsg.end()).c_str(), __FILEW__, __LINE__);
 		//Log Error Msg
 		return 0;
 	}
@@ -151,28 +152,27 @@ bool OGL::ReadShader(const char* p_path, std::string &p_shaderCode)const
 		return false;
 }
 
-GLuint OGL::CompileShader(const std::string &p_shaderCode, std::vector<char>p_errorMsg)const
+bool OGL::CompileShader(const GLuint p_shaderID, const std::string &p_shaderCode, std::vector<char>p_errorMsg)const
 {
-	GLuint shaderID;
-	GLint result = GL_FALSE;
+	GLint result;
 	int infoLogLength = 0;
 
 	char const* vertexSourcePointer = p_shaderCode.c_str();
-	glShaderSource(shaderID, 1, &vertexSourcePointer, NULL);
-	glCompileShader(shaderID);
+	glShaderSource(p_shaderID, 1, &vertexSourcePointer, NULL);
+	glCompileShader(p_shaderID);
 
 	//Check if the compilation worked
-	glGetShaderiv(shaderID, GL_COMPILE_STATUS, &result);
-	glGetShaderiv(shaderID, GL_INFO_LOG_LENGTH, &infoLogLength);
+	glGetShaderiv(p_shaderID, GL_COMPILE_STATUS, &result);
+	glGetShaderiv(p_shaderID, GL_INFO_LOG_LENGTH, &infoLogLength);
 
 	if (infoLogLength > 0)//If there is a log there is a problem
 	{
 		p_errorMsg.resize(infoLogLength + 1);
-		glGetShaderInfoLog(shaderID, infoLogLength, NULL, &p_errorMsg[0]);
-		return 0;
+		glGetShaderInfoLog(p_shaderID, infoLogLength, NULL, &p_errorMsg[0]);
+		return false;
 	}
 	else
-		return shaderID;
+		return true;
 }
 
 OGL* OpenGL = nullptr;

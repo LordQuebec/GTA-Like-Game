@@ -43,7 +43,7 @@ public:
 
 	void SetTargetFPS(const unsigned int FPS);
 
-	~TimeManager();
+	~TimeManager() { m_instance = nullptr; }
 };
 
 extern TimeManager* Time;

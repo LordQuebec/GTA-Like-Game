@@ -100,6 +100,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -127,6 +130,12 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='64Bit|x64'">
+    <Link>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -142,6 +151,7 @@
   <ItemGroup>
     <ClInclude Include="Game Files\Debug\Debug.h" />
     <ClInclude Include="Game Files\GameObject\GameObject.h" />
+    <ClInclude Include="Game Files\main.h" />
     <ClInclude Include="Game Files\Manager\Game Manager\GameManager.h" />
     <ClInclude Include="Game Files\Manager\Time Manager\TimeManager.h" />
     <ClInclude Include="Game Files\OpenGL\OpenGL.h" />

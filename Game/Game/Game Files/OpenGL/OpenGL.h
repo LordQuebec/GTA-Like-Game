@@ -24,7 +24,7 @@ private:
 	HGLRC m_hglrc;
 
 	bool ReadShader(const char* path, std::string &shaderCode)const;
-	GLuint CompileShader(const std::string &ShaderCode, std::vector<char>ErrorMsg)const;
+	bool CompileShader(const GLuint ShaderID, const std::string &ShaderCode, std::vector<char>ErrorMsg)const;
 
 public:
 	static OGL* CreateInstance();
