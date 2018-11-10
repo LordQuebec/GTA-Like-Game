@@ -15,7 +15,7 @@ GameManager* GameManager::CreateInstance()
 
 void GameManager::GameInfo(std::wstring p_name, DWORDLONG p_diskSpace, DWORDLONG p_ram, DWORDLONG p_virtualRam)
 {
-	ZeroMemory(&m_GameInfo, sizeof(m_GameInfo));
+	//ZeroMemory(&m_GameInfo, sizeof(m_GameInfo));
 
 	m_GameInfo.GameName = p_name;
 	m_GameInfo.DiskSpaceNeeded = p_diskSpace;
