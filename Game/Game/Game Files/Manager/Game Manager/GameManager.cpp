@@ -46,7 +46,9 @@ int GameManager::InitializeGame(UINT p_tFPS, HINSTANCE p_hInstance, WNDPROC p_wn
 		return 4;
 	}
 
-	//Time MGR
+	Time = TimeManager::CreateInstance();
+	Time->SetTargetFPS(p_tFPS);
+
 	//Lang MGR
 	//Script MGR
 	//Event MGR
@@ -101,7 +103,7 @@ WPARAM GameManager::MainLoop()
 
 		GameObject::CallFrameEndUpdate();
 
-		//Sleep TIME
+		Sleep(static_cast<DWORD>(Time->GetSleepTime()));
 	}
 
 	OpenGL->Disable(Window->GetHandle());

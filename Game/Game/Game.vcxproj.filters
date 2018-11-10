@@ -37,6 +37,9 @@
     <Filter Include="Source Files\Struct\Color">
       <UniqueIdentifier>{d236579e-b612-47ad-bfa3-b0a4a91bfd5a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Manager\TimeManager">
+      <UniqueIdentifier>{55152d43-e623-41d3-901e-a6a3cbd77c39}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game Files\main.cpp">
@@ -60,6 +63,9 @@
     <ClCompile Include="Game Files\Struct\Color\Color.cpp">
       <Filter>Source Files\Struct\Color</Filter>
     </ClCompile>
+    <ClCompile Include="Game Files\Manager\Time Manager\TimeManager.cpp">
+      <Filter>Source Files\Manager\TimeManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game Files\Debug\Debug.h">
@@ -79,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="Game Files\Struct\Color\Color.h">
       <Filter>Source Files\Struct\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Files\Manager\Time Manager\TimeManager.h">
+      <Filter>Source Files\Manager\TimeManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

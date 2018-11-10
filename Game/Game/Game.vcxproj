@@ -134,6 +134,7 @@
     <ClCompile Include="Game Files\GameObject\GameObject.cpp" />
     <ClCompile Include="Game Files\main.cpp" />
     <ClCompile Include="Game Files\Manager\Game Manager\GameManager.cpp" />
+    <ClCompile Include="Game Files\Manager\Time Manager\TimeManager.cpp" />
     <ClCompile Include="Game Files\OpenGL\OpenGL.cpp" />
     <ClCompile Include="Game Files\Struct\Color\Color.cpp" />
     <ClCompile Include="Game Files\Window\Window.cpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="Game Files\Debug\Debug.h" />
     <ClInclude Include="Game Files\GameObject\GameObject.h" />
     <ClInclude Include="Game Files\Manager\Game Manager\GameManager.h" />
+    <ClInclude Include="Game Files\Manager\Time Manager\TimeManager.h" />
     <ClInclude Include="Game Files\OpenGL\OpenGL.h" />
     <ClInclude Include="Game Files\Struct\Color\Color.h" />
     <ClInclude Include="Game Files\Window\Window.h" />

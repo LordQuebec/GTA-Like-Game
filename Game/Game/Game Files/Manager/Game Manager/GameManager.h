@@ -8,6 +8,7 @@
 #include "../../GameObject/GameObject.h"
 #include "../../OpenGL/OpenGL.h"
 #include "../../Window/Window.h"
+#include "../Time Manager/TimeManager.h"
 
 class GameManager
 {
