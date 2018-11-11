@@ -1,5 +1,7 @@
 #include "GameManager.h"
 
+#include "../../VBO/VBO.h"
+
 GameManager* GameManager::m_instance = nullptr;
 
 GameManager::GameManager()
@@ -80,6 +82,12 @@ WPARAM GameManager::MainLoop()
 	GameObject::CallStart();//Start all GameObjects
 	GameObject::CallAwake();
 
+	VBO test;
+
+	std::vector<glm::vec3>pos = { glm::vec3(-1, -1, 0), glm::vec3(1, -1, 0), glm::vec3(0, 1, 0) };
+	std::vector<glm::vec4>color = { glm::vec4(1, 0, 0, 1), glm::vec4(0, 1, 0, 1), glm::vec4(0, 0, 1, 1) };
+
+	test.SendData(GL_STATIC_DRAW, pos, color);
 
 	while(!m_quit)//Main Loop
 	{
@@ -100,6 +108,7 @@ WPARAM GameManager::MainLoop()
 		GameObject::CallRender();
 		
 		glUseProgram(m_shaderProgramID);
+		test.Render();
 
 		//EnableGUI
 		GameObject::CallOnGUI();
@@ -118,7 +127,7 @@ WPARAM GameManager::MainLoop()
 
 	sDelete(OpenGL);
 	sDelete(Window);
-	//sDelete(Time);
+	sDelete(Time);
 
 	GameObject::Clean();
 

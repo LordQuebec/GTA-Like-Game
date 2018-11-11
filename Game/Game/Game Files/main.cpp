@@ -6,6 +6,7 @@ int CALLBACK WinMain(
 	_In_ LPSTR	   lpCmdLine,
 	_In_ int	   nCmdShow)
 {
+
 	Game = GameManager::CreateInstance();
 
 	int exitCode = 0;

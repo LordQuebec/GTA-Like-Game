@@ -146,16 +146,20 @@
     <ClCompile Include="Game Files\Manager\Time Manager\TimeManager.cpp" />
     <ClCompile Include="Game Files\OpenGL\OpenGL.cpp" />
     <ClCompile Include="Game Files\Struct\Color\Color.cpp" />
+    <ClCompile Include="Game Files\VBO\VBO.cpp" />
     <ClCompile Include="Game Files\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game Files\Debug\Debug.h" />
     <ClInclude Include="Game Files\GameObject\GameObject.h" />
+    <ClInclude Include="Game Files\Geometrie\geometrieData.h" />
     <ClInclude Include="Game Files\main.h" />
     <ClInclude Include="Game Files\Manager\Game Manager\GameManager.h" />
     <ClInclude Include="Game Files\Manager\Time Manager\TimeManager.h" />
+    <ClInclude Include="Game Files\Math\Math.h" />
     <ClInclude Include="Game Files\OpenGL\OpenGL.h" />
     <ClInclude Include="Game Files\Struct\Color\Color.h" />
+    <ClInclude Include="Game Files\VBO\VBO.h" />
     <ClInclude Include="Game Files\Window\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

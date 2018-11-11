@@ -9,7 +9,7 @@
 #include "../Debug/Debug.h"
 #include "../GameObject/GameObject.h"
 #include "../OpenGL/OpenGL.h"
-#include "../glm/vec2.hpp"
+#include "../ThirdParty/glm/vec2.hpp"
 
 
 class WindowMgr : public GameObject

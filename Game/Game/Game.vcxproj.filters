@@ -40,6 +40,15 @@
     <Filter Include="Source Files\Manager\TimeManager">
       <UniqueIdentifier>{55152d43-e623-41d3-901e-a6a3cbd77c39}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\VBO">
+      <UniqueIdentifier>{d5408251-2ab8-4f3f-92e1-ac7f6d094278}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Geometrie">
+      <UniqueIdentifier>{1f39fcb8-c4f6-4483-ac76-c1b2da7f1ce6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Math">
+      <UniqueIdentifier>{51e2cf39-5415-4c46-9d4f-71fdc12340a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game Files\main.cpp">
@@ -66,6 +75,9 @@
     <ClCompile Include="Game Files\Manager\Time Manager\TimeManager.cpp">
       <Filter>Source Files\Manager\TimeManager</Filter>
     </ClCompile>
+    <ClCompile Include="Game Files\VBO\VBO.cpp">
+      <Filter>Source Files\VBO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game Files\Debug\Debug.h">
@@ -91,6 +103,15 @@
     </ClInclude>
     <ClInclude Include="Game Files\main.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Files\VBO\VBO.h">
+      <Filter>Source Files\VBO</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Files\Geometrie\geometrieData.h">
+      <Filter>Source Files\Geometrie</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Files\Math\Math.h">
+      <Filter>Source Files\Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

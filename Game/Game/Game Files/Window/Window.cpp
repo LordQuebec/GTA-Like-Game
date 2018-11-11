@@ -114,12 +114,12 @@ void WindowMgr::FrameStartUpdate()
 
 WindowMgr::~WindowMgr()
 {
-	if (DestroyWindow(m_handle))
+	if (!DestroyWindow(m_handle))
 		ERR_MSG("Window destruction error");
 	if (!UnregisterClass(m_wcex.lpszClassName, m_wcex.hInstance))
-		ERR_MSG("Class unregister error");
+		ERR_MSG("Window class unregister error");
 
-	m_instance = 0;
+	m_instance = nullptr;
 }
 
 WindowMgr* Window = nullptr;

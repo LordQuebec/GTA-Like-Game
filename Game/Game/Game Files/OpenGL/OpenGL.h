@@ -9,7 +9,7 @@
 
 #include "../Debug/Debug.h"
 #include "../Struct/Color/Color.h"
-#include "../glm/vec2.hpp"
+#include "../ThirdParty/glm/vec2.hpp"
 
 class OGL
 {

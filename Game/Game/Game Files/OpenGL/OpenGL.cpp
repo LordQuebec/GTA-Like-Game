@@ -33,10 +33,7 @@ void OGL::Enable(HWND p_handle, const Color &p_clearColor, const glm::vec2 &p_vi
 
 	m_hdc = GetDC(p_handle);
 
-	//**********Combine*****************
-	int format = ChoosePixelFormat(m_hdc, &pfd);
-	SetPixelFormat(m_hdc, format, &pfd);
-
+	SetPixelFormat(m_hdc, ChoosePixelFormat(m_hdc, &pfd), &pfd);
 
 	m_hglrc = wglCreateContext(m_hdc);
 	wglMakeCurrent(m_hdc, m_hglrc);

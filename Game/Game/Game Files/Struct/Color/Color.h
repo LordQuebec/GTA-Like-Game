@@ -1,9 +1,13 @@
 #pragma once
 
+#include "../../ThirdParty/glm/vec4.hpp"
+
 struct Color
 {
 	Color(float r = 0, float g = 0, float b = 0, float a = 0) : R(r), G(g), B(b), A(a) {}
 	Color(const Color &other) : R(other.R), G(other.G), B(other.B), A(other.A) {}
+
+	glm::vec4 Vec4();
 
 	Color operator+(const Color &other)const;
 	Color operator-(const Color &other)const;
