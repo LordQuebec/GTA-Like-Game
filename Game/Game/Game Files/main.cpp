@@ -43,7 +43,7 @@ LRESULT CALLBACK WndProc(
 		PostQuitMessage(0);
 		break;
 
-	
+	//TODO: KeyDown
 
 	WindowHandling
 	

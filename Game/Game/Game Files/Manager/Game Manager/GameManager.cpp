@@ -5,6 +5,7 @@
 GameManager* GameManager::m_instance = nullptr;
 
 GameManager::GameManager()
+	:m_GameState(Start)
 {}
 
 
@@ -58,6 +59,9 @@ int GameManager::InitializeGame(UINT p_tFPS, HINSTANCE p_hInstance, WNDPROC p_wn
 	Window = WindowMgr::CreateInstance();
 	Window->Create(m_GameInfo.GameName, p_hInstance, p_wndProc, p_nCmdShow);
 
+	Input = InputManager::CreateInstance();
+	Input->LoadInputs("Ressources/Config/Input.txt");
+
 	GetScreenInfo();//Get Resolution and name of the monitor
 
 	OpenGL = OGL::CreateInstance();
@@ -102,6 +106,10 @@ WPARAM GameManager::MainLoop()
 
 		GameObject::CallFrameStartUpdate();
 
+
+		if (Input->GetInput("walk"))
+			MSG_BOX("KeyPress", "OK");
+
 		OpenGL->ClearScreen();
 
 		GameObject::CallUpdate();
@@ -138,6 +146,7 @@ WPARAM GameManager::MainLoop()
 void GameManager::Quit(const int p_exitCode)
 {
 	m_quit = false;
+	m_GameState = GameState::Quit;
 	PostQuitMessage(p_exitCode);//Send Quit Message To Win32
 }
 

@@ -49,6 +49,12 @@
     <Filter Include="Source Files\Math">
       <UniqueIdentifier>{51e2cf39-5415-4c46-9d4f-71fdc12340a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Manager\InputManager">
+      <UniqueIdentifier>{542c830b-f53d-437c-8022-5ae7938e6528}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tool">
+      <UniqueIdentifier>{9275d416-aa48-4a5c-9631-bcc87c77f97e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game Files\main.cpp">
@@ -77,6 +83,12 @@
     </ClCompile>
     <ClCompile Include="Game Files\VBO\VBO.cpp">
       <Filter>Source Files\VBO</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Files\Manager\InputManager\InputManager.cpp">
+      <Filter>Source Files\Manager\InputManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Files\Tool\Tool.cpp">
+      <Filter>Source Files\Tool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +124,12 @@
     </ClInclude>
     <ClInclude Include="Game Files\Math\Math.h">
       <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Files\Manager\InputManager\InputManager.h">
+      <Filter>Source Files\Manager\InputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Files\Tool\Tool.h">
+      <Filter>Source Files\Tool</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

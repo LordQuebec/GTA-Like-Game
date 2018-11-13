@@ -9,6 +9,10 @@
 #include "../../OpenGL/OpenGL.h"
 #include "../../Window/Window.h"
 #include "../Time Manager/TimeManager.h"
+#include "../InputManager/InputManager.h"
+
+
+enum GameState { Start, Menu, Play, Load, Quit };
 
 class GameManager
 {
@@ -27,6 +31,7 @@ private:
 	bool m_quit = false;
 	MSG m_msg = MSG();
 	GLuint m_shaderProgramID = NULL;
+	GameState m_GameState;
 
 
 	struct
