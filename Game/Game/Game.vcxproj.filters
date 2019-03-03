@@ -55,6 +55,18 @@
     <Filter Include="Source Files\Tool">
       <UniqueIdentifier>{9275d416-aa48-4a5c-9631-bcc87c77f97e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Ressources">
+      <UniqueIdentifier>{1c51d4d8-ef04-4a33-9594-4d72ad89dc14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObject\Objects">
+      <UniqueIdentifier>{b613a5bd-3dde-4300-ada4-e7185392593b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObject\Objects\TestObjects">
+      <UniqueIdentifier>{7fb33cd2-cf01-467a-bda0-1b19c0b0383c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObject\Objects\TestObjects\Test">
+      <UniqueIdentifier>{2eef0a32-afb0-4e92-b6fb-d6fa5e0feb2d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game Files\main.cpp">
@@ -89,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="Game Files\Tool\Tool.cpp">
       <Filter>Source Files\Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Files\GameObject\Object\TestObjects\Test\Test.cpp">
+      <Filter>Source Files\GameObject\Objects\TestObjects\Test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +145,12 @@
     </ClInclude>
     <ClInclude Include="Game Files\Tool\Tool.h">
       <Filter>Source Files\Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Files\Ressources\Ressources.h">
+      <Filter>Source Files\Ressources</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Files\GameObject\Object\TestObjects\Test\Test.h">
+      <Filter>Source Files\GameObject\Objects\TestObjects\Test</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

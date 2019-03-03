@@ -4,6 +4,9 @@
 
 #include <Windows.h>
 #include <tchar.h>
+#include <fstream>
+
+#include "Tool\Tool.h"
 
 
 //Main Win32 function
@@ -21,3 +24,7 @@ LRESULT CALLBACK WndProc(
 	_In_ WPARAM,
 	_In_ LPARAM
 );
+
+
+
+void LoadLaunchConfig(int values[]);

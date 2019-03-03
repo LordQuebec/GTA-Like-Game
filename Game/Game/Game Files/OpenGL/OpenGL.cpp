@@ -1,9 +1,11 @@
 #include "OpenGL.h"
 
+#include "../ThirdParty/glm/gtc/matrix_transform.hpp"
+
 OGL* OGL::m_instance = nullptr;
 
 OGL::OGL()
-	:m_clearColor(Color()), m_clearFlag(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+	:m_clearColor(Color()), m_clearFlag(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT), m_projectionMatrix(glm::mat4(1.0f))
 {}
 
 
@@ -15,9 +17,10 @@ OGL* OGL::CreateInstance()
 }
 
 
-void OGL::Enable(HWND p_handle, const Color &p_clearColor, const glm::vec2 &p_viewSize)
+void OGL::Enable(HWND p_handle, const Color &p_clearColor, const float p_fov, const float p_nearPlane, const float p_farPlane, const glm::vec2 &p_viewSize)
 {
 	m_clearColor = p_clearColor;
+	m_fov = p_fov;
 
 	PIXELFORMATDESCRIPTOR pfd;
 	ZeroMemory(&pfd, sizeof(pfd));
@@ -43,6 +46,8 @@ void OGL::Enable(HWND p_handle, const Color &p_clearColor, const glm::vec2 &p_vi
 
 	glViewport(0, 0, static_cast<GLsizei>(p_viewSize.x), static_cast<GLsizei>(p_viewSize.y));
 
+	m_projectionMatrix = glm::perspective(m_fov = p_fov, p_viewSize.x / p_viewSize.y, m_nearPlane = p_nearPlane, m_farPlane = p_farPlane);
+
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
@@ -64,7 +69,7 @@ void OGL::ClearScreen()
 	glClear(m_clearFlag);
 }
 
-GLuint OGL::LoadShader(const char* p_vPath, const char* p_fPath)const
+GLuint OGL::LoadShader(const char* p_vPath, const char* p_fPath)
 {
 	//Create IDs
 	GLuint vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
@@ -101,36 +106,44 @@ GLuint OGL::LoadShader(const char* p_vPath, const char* p_fPath)const
 		return 0;
 	}
 
-	GLuint ProgramID = glCreateProgram();
-	
+	m_shaderProgramID = glCreateProgram();
+
 	//Log Linking Program
-	glAttachShader(ProgramID, vertexShaderID);
-	glAttachShader(ProgramID, fragmentShaderID);
-	glLinkProgram(ProgramID);
+	glAttachShader(m_shaderProgramID, vertexShaderID);
+	glAttachShader(m_shaderProgramID, fragmentShaderID);
+	glLinkProgram(m_shaderProgramID);
 
 	GLint result = GL_FALSE;
 	int infoLogLenght = 0;
 
-	glGetProgramiv(ProgramID, GL_LINK_STATUS, &result);
-	glGetProgramiv(ProgramID, GL_INFO_LOG_LENGTH, &infoLogLenght);
+	glGetProgramiv(m_shaderProgramID, GL_LINK_STATUS, &result);
+	glGetProgramiv(m_shaderProgramID, GL_INFO_LOG_LENGTH, &infoLogLenght);
 	if (infoLogLenght > 0)
 	{
 		ErrorMsg.resize(infoLogLenght);
-		glGetProgramInfoLog(ProgramID, infoLogLenght, NULL, &ErrorMsg[0]);
+		glGetProgramInfoLog(m_shaderProgramID, infoLogLenght, NULL, &ErrorMsg[0]);
 		
 		//std::_Debug_message(std::wstring(ErrorMsg.begin(), ErrorMsg.end()).c_str(), __FILEW__, __LINE__);
 		//Log Error Msg
 		return 0;
 	}
 
-	glDetachShader(ProgramID, vertexShaderID);
-	glDetachShader(ProgramID, fragmentShaderID);
+	glDetachShader(m_shaderProgramID, vertexShaderID);
+	glDetachShader(m_shaderProgramID, fragmentShaderID);
 
 	glDeleteShader(vertexShaderID);
 	glDeleteShader(fragmentShaderID);
 
-	return ProgramID;
+
+	return m_shaderProgramID;
 }
+
+
+GLint OGL::GetUniformLocation(const std::string &p_name)const
+{
+	return glGetUniformLocation(m_shaderProgramID, p_name.c_str());
+}
+
 
 bool OGL::ReadShader(const char* p_path, std::string &p_shaderCode)const
 {

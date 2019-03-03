@@ -7,7 +7,10 @@
 
 #include "../ThirdParty/glm/vec3.hpp"
 #include "../ThirdParty/glm/vec4.hpp"
+#include "../ThirdParty/glm/matrix.hpp"
+#include "../ThirdParty/glm/gtc/matrix_transform.hpp"
 
+#include "../OpenGL/OpenGL.h"
 #include "../Math/Math.h"
 
 
@@ -27,6 +30,9 @@ private:
 
 	size_t  m_numberOfVertex;
 
+	glm::mat4 m_modelMatrix;
+	GLint m_modelMatrixUniformLocation;
+
 	void SendBufferData(GLuint ID, int vertexCount, const GLvoid* data, GLenum usage);
 	void EnableVertexAttrib(GLuint ID, GLint size, GLenum type);
 
@@ -37,6 +43,10 @@ public:
 
 	void Render();
 	//void Render(const GLenum mode)const;
+
+	void Translate(const glm::vec3 &Translation);
+	void Rotate(const float Angle, const glm::vec3 &Axis);
+	void Scale(const glm::vec3 &Scale);
 
 	size_t GetNumberOfVertex()const { return m_numberOfVertex; }
 	void SetDrawMode(GLenum mode) { m_drawMode = mode; }

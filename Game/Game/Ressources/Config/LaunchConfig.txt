@@ -1,0 +1,6 @@
+HardDirveNeeded 0
+RamNeeded 0
+VirtualRamNeeded 0
+TargetFPS 60
+WinSizeX 900
+WinSizeY 900

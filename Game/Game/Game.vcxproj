@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="Game Files\Debug\Debug.cpp" />
     <ClCompile Include="Game Files\GameObject\GameObject.cpp" />
+    <ClCompile Include="Game Files\GameObject\Object\TestObjects\Test\Test.cpp" />
     <ClCompile Include="Game Files\main.cpp" />
     <ClCompile Include="Game Files\Manager\Game Manager\GameManager.cpp" />
     <ClCompile Include="Game Files\Manager\InputManager\InputManager.cpp" />
@@ -154,6 +155,7 @@
   <ItemGroup>
     <ClInclude Include="Game Files\Debug\Debug.h" />
     <ClInclude Include="Game Files\GameObject\GameObject.h" />
+    <ClInclude Include="Game Files\GameObject\Object\TestObjects\Test\Test.h" />
     <ClInclude Include="Game Files\Geometrie\geometrieData.h" />
     <ClInclude Include="Game Files\main.h" />
     <ClInclude Include="Game Files\Manager\Game Manager\GameManager.h" />
@@ -161,6 +163,7 @@
     <ClInclude Include="Game Files\Manager\Time Manager\TimeManager.h" />
     <ClInclude Include="Game Files\Math\Math.h" />
     <ClInclude Include="Game Files\OpenGL\OpenGL.h" />
+    <ClInclude Include="Game Files\Ressources\Ressources.h" />
     <ClInclude Include="Game Files\Struct\Color\Color.h" />
     <ClInclude Include="Game Files\Tool\Tool.h" />
     <ClInclude Include="Game Files\VBO\VBO.h" />

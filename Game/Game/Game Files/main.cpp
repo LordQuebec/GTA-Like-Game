@@ -14,8 +14,14 @@ int CALLBACK WinMain(
 	//std::wstring GameName = L"nGTA";
 	//std::wstring horn = L"\U0001F918";
 
-	Game->GameInfo(L"nGTA\U0001F918", 0, 0, 0);
-	exitCode = Game->InitializeGame(60, hInstance, WndProc, nCmdShow);
+	int launchParams[6];
+
+	//Load base info
+	//Disk Ram vRam, target, winsize
+	LoadLaunchConfig(launchParams);
+
+	Game->GameInfo(L"nGTA\U0001F918", launchParams[0], launchParams[1], launchParams[2]);
+	exitCode = Game->InitializeGame(launchParams[3], launchParams[4], launchParams[5], hInstance, WndProc, nCmdShow);
 
 	if (exitCode)//If the initialization failed
 		return exitCode;//Quit
@@ -43,9 +49,8 @@ LRESULT CALLBACK WndProc(
 		PostQuitMessage(0);
 		break;
 
-	//TODO: KeyDown
-
 	WindowHandling
+	ForwardKeys
 	
 	case WM_SYSCOMMAND:
 		if (wParam == SC_CLOSE)
@@ -61,4 +66,25 @@ LRESULT CALLBACK WndProc(
 	}
 	
 	return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+
+
+void LoadLaunchConfig(int p_values[])
+{
+	std::string line = "";
+	std::vector<std::string> params;
+
+	std::ifstream fStream("Ressources/Config/LaunchConfig.txt", std::ios::in);
+
+	if (fStream.is_open())
+	{
+		for (int i = 0; i < 6; ++i)
+		{
+			getline(fStream, line);
+			Tool::SplitStringWords(line, params);
+
+			p_values[i] = std::stoi(params[1]);
+			params.clear();
+		}
+	}
 }

@@ -1,0 +1,3 @@
+fov 90
+minZ 0.3
+maxZ 1000

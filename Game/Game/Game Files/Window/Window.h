@@ -44,7 +44,7 @@ public:
 	static WindowMgr* CreateInstance();
 	static WindowMgr* GetInstance() { return m_instance; }
 
-	int Create(std::wstring &name, HINSTANCE, WNDPROC, int nCmdShow);
+	int Create(std::wstring &name, int sizeX, int sizeY, HINSTANCE, WNDPROC, int nCmdShow);
 
 	glm::vec2 GetPos()const { return m_pos; }
 	glm::vec2 GetSize()const { return m_size; }

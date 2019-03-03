@@ -2,6 +2,8 @@
 
 #include "../../VBO/VBO.h"
 
+#include "../../GameObject/Object/TestObjects/Test/Test.h"
+
 GameManager* GameManager::m_instance = nullptr;
 
 GameManager::GameManager()
@@ -27,7 +29,7 @@ void GameManager::GameInfo(std::wstring p_name, DWORDLONG p_diskSpace, DWORDLONG
 	m_GameInfo.CPUSpeed = 0;
 }
 
-int GameManager::InitializeGame(UINT p_tFPS, HINSTANCE p_hInstance, WNDPROC p_wndProc, int p_nCmdShow)
+int GameManager::InitializeGame(UINT p_tFPS, int winSizeX, int winSizeY, HINSTANCE p_hInstance, WNDPROC p_wndProc, int p_nCmdShow)
 {
 	//Check if the app exist and if we have enough HardDrive/Ram
 	//Get the CPU Speed
@@ -57,7 +59,7 @@ int GameManager::InitializeGame(UINT p_tFPS, HINSTANCE p_hInstance, WNDPROC p_wn
 	//Event MGR
 
 	Window = WindowMgr::CreateInstance();
-	Window->Create(m_GameInfo.GameName, p_hInstance, p_wndProc, p_nCmdShow);
+	Window->Create(m_GameInfo.GameName, winSizeX, winSizeY, p_hInstance, p_wndProc, p_nCmdShow);
 
 	Input = InputManager::CreateInstance();
 	Input->LoadInputs("Ressources/Config/Input.txt");
@@ -65,7 +67,7 @@ int GameManager::InitializeGame(UINT p_tFPS, HINSTANCE p_hInstance, WNDPROC p_wn
 	GetScreenInfo();//Get Resolution and name of the monitor
 
 	OpenGL = OGL::CreateInstance();
-	OpenGL->Enable(Window->GetHandle(), Color(1, 0, 1, 1), Window->GetSize());
+	OpenGL->Enable(Window->GetHandle(), Color(1, 0, 1, 1), 60, 0.3, 10, Window->GetSize());
 	
 	m_shaderProgramID = OpenGL->LoadShader("Ressources/Shaders/Default/VertexShader.vs", "Ressources/Shaders/Default/FragmentShader.fs");
 
@@ -75,6 +77,8 @@ int GameManager::InitializeGame(UINT p_tFPS, HINSTANCE p_hInstance, WNDPROC p_wn
 		return 5;
 	}
 
+	Window->Show();
+
 	//Splash screen
 	//check set save game directory
 
@@ -83,15 +87,11 @@ int GameManager::InitializeGame(UINT p_tFPS, HINSTANCE p_hInstance, WNDPROC p_wn
 
 WPARAM GameManager::MainLoop()
 {
+	TestO* test = new TestO();
+
 	GameObject::CallStart();//Start all GameObjects
 	GameObject::CallAwake();
 
-	VBO test;
-
-	std::vector<glm::vec3>pos = { glm::vec3(-1, -1, 0), glm::vec3(1, -1, 0), glm::vec3(0, 1, 0) };
-	std::vector<glm::vec4>color = { glm::vec4(1, 0, 0, 1), glm::vec4(0, 1, 0, 1), glm::vec4(0, 0, 1, 1) };
-
-	test.SendData(GL_STATIC_DRAW, pos, color);
 
 	while(!m_quit)//Main Loop
 	{
@@ -104,19 +104,16 @@ WPARAM GameManager::MainLoop()
 			DispatchMessage(&m_msg);
 		}
 
+		glUseProgram(m_shaderProgramID);
+
 		GameObject::CallFrameStartUpdate();
 
-
-		if (Input->GetInput("walk"))
-			MSG_BOX("KeyPress", "OK");
 
 		OpenGL->ClearScreen();
 
 		GameObject::CallUpdate();
 		GameObject::CallRender();
 		
-		glUseProgram(m_shaderProgramID);
-		test.Render();
 
 		//EnableGUI
 		GameObject::CallOnGUI();
@@ -125,6 +122,8 @@ WPARAM GameManager::MainLoop()
 		OpenGL->SwapBuffer();//Display Frame
 
 		GameObject::CallFrameEndUpdate();
+
+		Input->ClearKeys();
 
 		Sleep(static_cast<DWORD>(Time->GetSleepTime()));
 	}

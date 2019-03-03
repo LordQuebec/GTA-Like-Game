@@ -17,7 +17,7 @@ WindowMgr* WindowMgr::CreateInstance()
 }
 
 
-int WindowMgr::Create(wstring &p_name, HINSTANCE p_hInstance, WNDPROC p_wndProc, int p_nCmdShow)
+int WindowMgr::Create(wstring &p_name, int sizeX, int sizeY, HINSTANCE p_hInstance, WNDPROC p_wndProc, int p_nCmdShow)
 {
 	m_windowName = p_name;
 	ZeroMemory(&m_wcex, sizeof(m_wcex));
@@ -45,7 +45,7 @@ int WindowMgr::Create(wstring &p_name, HINSTANCE p_hInstance, WNDPROC p_wndProc,
 		m_windowName.c_str(),
 		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, CW_USEDEFAULT,
-		900, 900,
+		sizeX, sizeY,
 		NULL, NULL,
 		p_hInstance,
 		NULL);
@@ -56,7 +56,7 @@ int WindowMgr::Create(wstring &p_name, HINSTANCE p_hInstance, WNDPROC p_wndProc,
 		ERR_MSG("Call to CreateWindow failed");
 		return 1;//Exit
 	}
-	ShowWindow(m_handle, p_nCmdShow);
+	//ShowWindow(m_handle, p_nCmdShow);
 
 	return 0;
 }

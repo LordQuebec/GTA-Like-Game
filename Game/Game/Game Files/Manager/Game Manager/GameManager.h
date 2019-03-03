@@ -67,7 +67,7 @@ public:
 
 	void GameInfo(const std::wstring AppName, DWORDLONG DiskSpaceNeeded, DWORDLONG RamNeeded, DWORDLONG VirtualMemoryNeeded);
 
-	int InitializeGame(UINT targetFPS, HINSTANCE hInstance, WNDPROC winProc, int nCmdShow);
+	int InitializeGame(UINT targetFPS, int winSizeX, int WinSizeY, HINSTANCE hInstance, WNDPROC winProc, int nCmdShow);
 	WPARAM MainLoop();
 
 	std::wstring GetGameName()const { return m_GameInfo.GameName; }

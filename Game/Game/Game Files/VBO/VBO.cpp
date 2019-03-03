@@ -2,7 +2,7 @@
 
 
 VBO::VBO()
-	:m_drawMode(GL_TRIANGLES), m_numberOfVertex(0)
+	:m_drawMode(GL_TRIANGLES), m_numberOfVertex(0), m_modelMatrix(1)
 {}
 
 
@@ -20,6 +20,8 @@ void VBO::SendData(GLenum p_usage, std::vector<glm::vec3> &p_pos, std::vector<gl
 	SendBufferData(VBO_COLOR_ID, vertexCount * 4, &p_color[0], p_usage);
 
 	glBindBuffer(GL_ARRAY_BUFFER, NULL);
+
+	m_modelMatrixUniformLocation = OpenGL->GetUniformLocation("ModelMatrix");
 }
 
 void VBO::SendBufferData(GLuint p_id, int p_count, const GLvoid* p_data, GLenum p_usage)
@@ -44,12 +46,31 @@ void VBO::Render()
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_elmArrayBuf);
 
 	//glDrawElements(m_drawMode, m_numberOfVertex, GL_UNSIGNED_SHORT, NULL);
+	
+	glUniformMatrix4fv(m_modelMatrixUniformLocation, 1, GL_FALSE, &m_modelMatrix[0][0]);
+	
 	glDrawArrays(m_drawMode, 0, m_numberOfVertex);
 
 	glDisableVertexAttribArray(VBO_COLOR_ID);
 	glDisableVertexAttribArray(VBO_POS_ID);
 
 	glBindBuffer(GL_ARRAY_BUFFER, NULL);
+}
+
+
+void VBO::Translate(const glm::vec3 &p_trans)
+{
+	m_modelMatrix *= glm::translate(m_modelMatrix, p_trans);
+}
+
+void VBO::Rotate(const float p_angle, const glm::vec3 &p_axis)
+{
+	m_modelMatrix = glm::rotate(m_modelMatrix, p_angle, p_axis);
+}
+
+void VBO::Scale(const glm::vec3 &p_scale)
+{
+	m_modelMatrix = glm::scale(m_modelMatrix, p_scale);
 }
 
 
